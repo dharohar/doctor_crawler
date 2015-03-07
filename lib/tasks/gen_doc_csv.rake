@@ -54,8 +54,6 @@ task :populate_db => :environment do
 		registrations.each do |reg|
 			reg_number = reg.at_css('.exp-tenure').text.strip
 			reg_detail = reg.at_css('.exp-details').text.strip
-			puts reg_number
-			puts reg_detail
 		end
 		f.close
 	end

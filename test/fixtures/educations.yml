@@ -3,9 +3,7 @@
 one:
   degree: MyString
   college: MyString
-  year: MyString
 
 two:
   degree: MyString
   college: MyString
-  year: MyString
