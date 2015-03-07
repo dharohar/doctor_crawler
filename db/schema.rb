@@ -11,19 +11,84 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306173120) do
+ActiveRecord::Schema.define(version: 20150307134722) do
+
+  create_table "awards", force: true do |t|
+    t.string   "desc"
+    t.string   "year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "doctor_id"
+  end
 
   create_table "doctors", force: true do |t|
     t.string   "name"
+    t.string   "profile_image_path"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "services", force: true do |t|
-    t.string   "name"
+  create_table "educations", force: true do |t|
+    t.string   "degree"
+    t.string   "college"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "doctor_id"
+  end
+
+  create_table "experiences", force: true do |t|
+    t.string   "period"
+    t.string   "detail"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "doctor_id"
+  end
+
+  create_table "locations", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "fee"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "doctor_id"
+  end
+
+  create_table "memberships", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "doctor_id"
+  end
+
+  create_table "registrations", force: true do |t|
+    t.string   "number"
+    t.string   "detail"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "doctor_id"
+  end
+
+  create_table "services", force: true do |t|
+    t.string   "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "doctor_id"
+  end
+
+  create_table "specializations", force: true do |t|
+    t.string   "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "doctor_id"
+  end
+
+  create_table "timings", force: true do |t|
+    t.string   "day"
+    t.string   "session"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "location_id"
   end
 
 end
