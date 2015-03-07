@@ -1,5 +1,5 @@
 desc "Populate DB from doctor links"
-task :gen_csv => :environment do 
+task :populate_db => :environment do 
 	require 'nokogiri'
 	require 'open-uri'
 
@@ -9,32 +9,41 @@ task :gen_csv => :environment do
 		
 		name = doc.at_css('h1').text
 		profile_image_path = doc.at_css('.doc_avatar')['data-originalsrc'].strip
-		qual_array = doc.at_css('.doctor-qualifications').text.strip.split('-')
-		qualifications = qual_array[0]
-		if qualifications != nil
-			qualifications = qualifications.gsub(/\s+/, "")
-		end
-		
-		specialization = qual_array[1]
-		if specialization != nil
-			specialization = specialization.gsub(/\s+/, "")
-		end
-		
 		description = doc.at_css('#summaryText')['data-summary'].strip
-		clinic_title = doc.at_css('#infoTab .grey').text
-		clinic_name = ""
-		clinic_locality = doc.at_css('.black').text.gsub(/\s+/, "")
-		clinic_city = doc.at_css('.clinic-locality span').text.gsub(/\s+/, "")
-		clinic_address = doc.at_css('.clinic-street-address span').text.strip
-		clinic_timings = doc.at_css('.clinic-timings-session').text.strip
-		clinic_fee = doc.at_css('.clinic-fees p').text.strip
-		education = doc.css('.qualification-row').text.strip.gsub(/\s+/, "")
-		experience = doc.css('.organization-row').text.strip.gsub(/\s+/, "")
-		awards_and_recognitions = doc.css('.award-row').text.strip.gsub(/\s+/, "")
-		puts awards_and_recognitions
-		memberships = doc.css('.membership-row').text.strip.gsub(/\s+/, "")
-		f.close
+		# .gsub(/\s+/, "")
+
+		locations = doc.css('.clinic-block')
+		locations.each do |loc|
+			loc_name = loc.at_css('.grey')
+			loc_address = loc.at_css('.clinic-street-address span')
+			loc_fee = loc.at_css('.clinic-fees p')
+
+			loc_timings = loc.css('.clinic-timings-wrapper')
+			loc_timings.each do |timing|
+				days = timing.at_css('.clinic-timings-day').text.strip
+				loc_sessions = timing.at_css('.clinic-timings-session')
+				loc_sessions.css('br').each{ |br| br.replace(", ") }
+				sess = loc_sessions.text.strip			
+			end
+		end 
+		services = doc.css('.service-cell')
+
+		specializations = doc.css('.specialty-row')
+
+		educations_nodeset = doc.css('.qualification-row')
+		educations = []
+		educations_nodeset.each do |ser|
+			educations << ser.text.strip
+			# puts "**"+ser+"**"
 		end
+		educations.each do |ser|
+			# educations << ser.text.strip
+			puts "**"+ser+"**"
+		end
+		experiences = doc.css('.organization-row').text.strip
+		awards_and_recognitions = doc.css('.award-row').text.strip
+		memberships = doc.css('.membership-row').text.strip
+		f.close
 	end
 
 end
