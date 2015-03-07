@@ -30,19 +30,33 @@ task :populate_db => :environment do
 
 		specializations = doc.css('.specialty-row')
 
-		educations_nodeset = doc.css('.qualification-row')
-		educations = []
-		educations_nodeset.each do |ser|
-			educations << ser.text.strip
-			# puts "**"+ser+"**"
+		educations = doc.css('.qualification-row')
+		educations.each do |edu|
+			degree = edu.at_css('.qualification-degree').text.strip
+			college = edu.at_css('.qualification-details').text.gsub("-", "").strip
 		end
-		educations.each do |ser|
-			# educations << ser.text.strip
-			puts "**"+ser+"**"
+
+		experiences = doc.css('.organization-row')
+		experiences.each do |ex|
+			period = ex.at_css('.exp-tenure').text.strip
+			det = ex.at_css('.exp-details').text.strip
 		end
-		experiences = doc.css('.organization-row').text.strip
-		awards_and_recognitions = doc.css('.award-row').text.strip
-		memberships = doc.css('.membership-row').text.strip
+		awards_and_recognitions = doc.css('.award-row')
+		awards_and_recognitions.each do |award|
+			award_desc = award.text.strip.rpartition("-").first.strip
+			award_year = award.text.strip.rpartition("-").last.strip
+		end
+		memberships = doc.css('.membership-row')
+		memberships.each do |mem|
+			mem_title = mem.text.strip
+		end
+		registrations = doc.css('.registration-row')
+		registrations.each do |reg|
+			reg_number = reg.at_css('.exp-tenure').text.strip
+			reg_detail = reg.at_css('.exp-details').text.strip
+			puts reg_number
+			puts reg_detail
+		end
 		f.close
 	end
 
