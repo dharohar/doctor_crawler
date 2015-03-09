@@ -1,1 +1,10 @@
 C:/Users/dharohar.rathore/Documents/Projects/doctor_crawler/doctors/arpana.htm
+C:/Users/dharohar.rathore/Documents/Projects/doctor_crawler/doctors/jyoti.htm
+C:/Users/dharohar.rathore/Documents/Projects/doctor_crawler/doctors/manu.htm
+C:/Users/dharohar.rathore/Documents/Projects/doctor_crawler/doctors/rakhi.htm
+C:/Users/dharohar.rathore/Documents/Projects/doctor_crawler/doctors/ranjan.htm
+C:/Users/dharohar.rathore/Documents/Projects/doctor_crawler/doctors/richa.htm
+C:/Users/dharohar.rathore/Documents/Projects/doctor_crawler/doctors/sumit.htm
+C:/Users/dharohar.rathore/Documents/Projects/doctor_crawler/doctors/sunil.htm
+C:/Users/dharohar.rathore/Documents/Projects/doctor_crawler/doctors/susheel.htm
+C:/Users/dharohar.rathore/Documents/Projects/doctor_crawler/doctors/tapesh.htm

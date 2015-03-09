@@ -7,7 +7,9 @@ task :populate_db => :environment do
 		f = File.open(line.strip)
 		doc = Nokogiri::HTML(f)
 		
-		name = doc.at_css('h1').text.strip
+		name = doc.at_css('h1') || ""
+		name = name.text.strip if !name.blank?
+		puts "fetching data for: " + name
 		profile_image_path = doc.at_css('.doc_avatar')['data-originalsrc'].strip
 		description = doc.at_css('#summaryText')['data-summary'].strip
 		doctor_instance = Doctor.new(name:name, profile_image_path:profile_image_path, description:description)
@@ -15,17 +17,21 @@ task :populate_db => :environment do
 
 		locations = doc.css('.clinic-block')
 		locations.each do |loc|
-			loc_name = loc.at_css('.grey').text.strip
-			loc_address = loc.at_css('.clinic-street-address span').text.strip
-			loc_fee = loc.at_css('.clinic-fees p').text.strip
+			loc_name = loc.at_css('.grey') || ""
+			loc_name = loc_name.text.strip if !loc_name.blank?
+			loc_address = loc.at_css('.clinic-street-address span') || ""
+			loc_address = loc_address.text.strip if !loc_address.blank?
+			loc_fee = loc.at_css('.clinic-fees p') || ""
+			loc_fee = loc_fee.text.strip if !loc_fee.blank?
 			location_instance = Location.new(name:loc_name, address:loc_address, fee:loc_fee)
 
 			loc_timings = loc.css('.clinic-timings-wrapper')
 			loc_timings.each do |timing|
-				days = timing.at_css('.clinic-timings-day').text.strip
+				days = timing.at_css('.clinic-timings-day') || ""
+				days = days.text.strip if !days.blank?
 				loc_sessions = timing.at_css('.clinic-timings-session')
-				loc_sessions.css('br').each{ |br| br.replace(", ") }
-				sess = loc_sessions.text.strip
+				loc_sessions.css('br').each{ |br| br.replace(", ") } if !loc_sessions.blank?
+				sess = loc_sessions.text.strip if !loc_sessions.blank?
 				timing_instance = Timing.new(day:days, session:sess)
 				location_instance.timings << timing_instance
 			end
@@ -45,15 +51,18 @@ task :populate_db => :environment do
 
 		educations = doc.css('.qualification-row')
 		educations.each do |edu|
-			degree = edu.at_css('.qualification-degree').text.strip
-			college = edu.at_css('.qualification-details').text.gsub("-", "").strip
+			degree = edu.at_css('.qualification-degree') || ""
+			degree = degree.text.strip if !degree.blank?
+			college = edu.at_css('.qualification-details') || ""
+			college = college.text.gsub("-", "").strip if !college.blank?
 			education_instance = Education.new(degree:degree, college:college)
 			doctor_instance.educations << education_instance
 		end
 
 		experiences = doc.css('.organization-row')
 		experiences.each do |ex|
-			period = ex.at_css('.exp-tenure').text.strip
+			period = ex.at_css('.exp-tenure') || ""
+			period = period.text.strip if !period.blank?
 			det = ex.at_css('.exp-details').text.strip
 			experience_instance = Experience.new(period:period, detail:det)
 			doctor_instance.experiences << experience_instance
@@ -80,6 +89,7 @@ task :populate_db => :environment do
 		end
 		f.close
 		doctor_instance.save
+		puts "sucessfully saved: " + name
 	end
 
 end
