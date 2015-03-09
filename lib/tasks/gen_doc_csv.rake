@@ -96,8 +96,18 @@ task :populate_db => :environment do
 			doctor_instance.registrations << reg_instance
 		end
 		f.close
-		doctor_instance.save
-		puts "sucessfully saved: " + name
+		
+		if Doctor.find_by(name:name).nil?
+			doctor_instance.save
+			if doctor_instance.save
+				puts "sucessfully saved: " + name
+			else
+				puts "doctor not saved, some error occurred"
+			end
+		else
+			puts "Doctor not added because doctor already present in DB"
+		end
+		
 	end
 
 end
