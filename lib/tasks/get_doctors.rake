@@ -5,14 +5,16 @@ task :fetch_links => :environment do
 	
 	startPage = ENV['start']
 	endPage = ENV['end']
+	city = ENV['city']
 
-	file = File.open('C:/Users/dharohar.rathore/Documents/Projects/doctor_crawler/lists/generated_links.txt','w') 
-	commonPath = 'C:/Users/dharohar.rathore/Documents/Projects/doctor_crawler/lists/list'
+	file = File.open('/home/dharohar/work/workspace/projects/doctor_crawler/lists/generated_links.txt','w') 
+	# commonPath = 'C:/Users/dharohar.rathore/Documents/Projects/doctor_crawler/lists/list'
+	commonPath = '/home/dharohar/work/workspace/projects/doctor_crawler/lists/' + city + '/list'
 
 	for page in startPage..endPage
-		filepath = commonPath + ".htm"
+		filepath = commonPath + ".html"
 		if (page.to_i!=1)
-			filepath = commonPath + page + ".htm"
+			filepath = commonPath + page + ".html"
 		end
 		
 		f = File.open(filepath)

@@ -1,0 +1,201 @@
+/* Think you can write better CSS? Drop a typo-free email to jobs at webengage dot com */
+
+
+
+
+
+
+
+
+
+
+
+div.wrapper {
+	color:#000000;	
+	background-color:transparent;
+}
+
+div.container {
+	background-color:#E9E9E9;
+	border:4px solid #666666;
+	border-bottom:none;
+	padding-bottom:2px;
+	max-height: 360px;
+}
+
+select.select {
+	border:1px solid #b5b5b5;
+}
+
+input.text, textarea.textarea {
+	-moz-box-shadow: inset 0 0 2px #000000;
+	-webkit-box-shadow: inset 0 0 2px #000000;
+	box-shadow: inset 0 0 2px #000000;
+	background-color:#f9f9f9;
+}
+
+textarea.textarea {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+}
+
+textarea.textarea:hover,
+textarea.textarea:focus{
+	background:#fff;
+}
+
+div.field label{
+	color:#000000;
+}
+
+span.vertical,
+span.horizontal{
+	background-color:#dcdcdc;
+}
+
+span.horizontal:hover,
+span.vertical:hover{
+	background-color:#c2c2c2;
+}
+
+table.matrix-question tr.odd{
+	background-color:#dcdcdc;
+}
+
+table.matrix-question tr.even{
+	background-color:#cfcfcf;
+}
+
+table.matrix-question tr.current{
+	background-color:#c2c2c2;
+}
+
+button {
+        display:inline-block;
+        width:auto;
+}
+
+button {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  font: bold 11px Arial, sans-serif;
+  line-height: 1;
+  padding: 8px 0;
+  text-align: center;
+  width:100px;
+  font-size:13px;
+  font-weight:normal;
+  /*text-shadow: 1px 1px #000000;*/
+}
+
+button:hover {
+        cursor: pointer;
+}
+
+button.submit-survey {
+  background-color: #444444;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #7fbf4d), color-stop(100%, #63a62f));
+  background-image: -webkit-linear-gradient(top, #515151, #373737);
+  background-image: -moz-linear-gradient(top, #515151, #373737);
+  background-image: -ms-linear-gradient(top, #515151, #373737);
+  background-image: -o-linear-gradient(top, #515151, #373737);
+  background-image: linear-gradient(top, #515151, #373737);
+  border: 1px solid #2a2a2a;
+  /* border-bottom: 1px solid #$data['c2aBorderColor']; */
+  /* -moz-box-shadow: inset 0 1px 0 0 #96ca6d; */
+  /* -webkit-box-shadow: inset 0 1px 0 0 #96ca6d; */
+  /* box-shadow: inset 0 1px 0 0 #96ca6d; */
+  /* text-shadow: 0 -1px 0 #4c9021; */
+  color: #EEEEEE;
+}
+
+button.submit-survey:hover{
+  background-color: #515151;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5e5e5e), color-stop(100%, #444444));
+  background-image: -webkit-linear-gradient(top, #5e5e5e, #444444);
+  background-image: -moz-linear-gradient(top, #5e5e5e, #444444);
+  background-image: -ms-linear-gradient(top, #5e5e5e, #444444);
+  background-image: -o-linear-gradient(top, #5e5e5e, #444444);
+  background-image: linear-gradient(top, #5e5e5e, #444444);
+  /* -moz-box-shadow: inset 0 1px 0 0 #8dbf67; */
+  /* -webkit-box-shadow: inset 0 1px 0 0 #8dbf67; */
+  /* box-shadow: inset 0 1px 0 0 #8dbf67; */
+}
+
+button.submit-survey:active{
+  border: 1px solid #2a2a2a;
+  background-color: #373737;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #444444), color-stop(100%, #2a2a2a));
+  background-image: -webkit-linear-gradient(top, #444444, #2a2a2a);
+  background-image: -moz-linear-gradient(top, #444444, #2a2a2a);
+  background-image: -ms-linear-gradient(top, #444444, #2a2a2a);
+  background-image: -o-linear-gradient(top, #444444, #2a2a2a);
+  background-image: linear-gradient(top, #444444, #2a2a2a);
+  /* border-bottom: 1px solid #2a2a2a; */
+  /* -moz-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee; */
+  /* -webkit-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee; */
+  /* box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee; */
+}
+
+
+div.powered-by a,
+div.powered-by a:hover,
+div.powered-by a:visited {
+	color:#000000;
+	background-image: none;
+}
+
+a.close, a.minimize, a.close:hover, a.minimize:hover {
+	color:#000000
+}
+
+.mac input.checkbox, .mac input.radio {
+  top : -2px;
+} 
+
+.rating-question-stars span label i{
+  color:#9b9b9b;
+}
+
+.rating-question-stars span.starClicked label i{
+  color:#9b9b9b;
+}
+
+.rating-question-stars span.starHover label i{
+  color:#9b9b9b;
+}
+
+.hlbl {
+	position: absolute;
+	left: 0px;
+	top: -5000px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+.icon-extra-large:before {
+  vertical-align: -10%;
+  font-size: 2em;
+}
+/* makes the font 33% larger relative to the icon container */
+.icon-large:before {
+  vertical-align: -10%;
+  font-size: 1.3em;
+}
+
+.icon-mid:before {
+  vertical-align: -10%;
+  font-size: 1em;
+}
+.icon-small:before {
+	vertical-align: -10%;
+  font-size: .75em;
+}
+
+
