@@ -2,7 +2,7 @@ desc "Extract links for profile pages of doctors"
 task :fetch_links => :environment do 
 	require 'nokogiri'
 	require 'open-uri'
-	
+	# rake fetch_links start=1 end=3 city=delhi
 	startPage = ENV['start']
 	endPage = ENV['end']
 	city = ENV['city']

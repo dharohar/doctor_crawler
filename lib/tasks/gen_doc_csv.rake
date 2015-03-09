@@ -55,7 +55,8 @@ task :populate_db => :environment do
 		experiences = doc.css('.organization-row')
 		experiences.each do |ex|
 			period = node_to_text(ex.at_css('.exp-tenure'))
-			det = ex.at_css('.exp-details').text.strip
+			# det = ex.at_css('.exp-details').text.strip
+			det = node_to_text(ex.at_css('.exp-details'))
 			experience_instance = Experience.new(period:period, detail:det)
 			doctor_instance.experiences << experience_instance
 		end
